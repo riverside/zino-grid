@@ -2,11 +2,14 @@
   "name": "zino-grid",
   "version": "1.0.0",
   "description": "JavaScript Grid Web Component",
-  "keywords": {
+  "keywords": [
     "javascript",
     "grid",
-    "webcomponent"
-  },
+    "webcomponents",
+    "table",
+    "customelements",
+    "es6"
+  ],
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.1.0",
     "font-awesome": "^4.7.0"
