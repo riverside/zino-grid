@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid</title>
+    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <style>
+    :root {
+        --background-head: #fff;
+        --color-head: #FA4251;
+        --color-head-active: #FA4251;
+        --background-foot: #fff;
+        --color-foot: #222;
+        --background-odd: #fff;
+        --background-even: #fff;
+        --color-odd: #333;
+        --color-even: #222;
+    }
+    zino-grid {
+        margin: 20px auto 0;
+        width: 100%;
+        max-width: 1024px;
+    }
+    </style>
+</head>
+<body>
+    <zino-grid data-url="data.json" 
+        data-per-page="20" 
+        data-page="2" 
+        data-filter="true"
+        data-sort="true"
+        data-dir="ltr"
+        data-debug="true"></zino-grid>
+
+    <script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../zino-grid.js"></script>
+</body>
+</html>

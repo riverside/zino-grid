@@ -1,0 +1,26 @@
+{
+  "name": "zino-grid",
+  "version": "1.0.0",
+  "description": "JavaScript Grid Web Component",
+  "keywords": {
+    "javascript",
+    "grid",
+    "webcomponent"
+  },
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.1.0",
+    "font-awesome": "^4.7.0"
+  },
+  "main": "zino-grid.js",
+  "author": {
+    "name": "Dimitar Ivanov",
+    "url": "https://twitter.com/DimitarIvanov"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riverside/zino-grid.git"
+  },
+  "bugs": "https://github.com/riverside/zino-grid/issues",
+  "homepage": "https://github.com/riverside/zino-grid"
+}
