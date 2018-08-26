@@ -1,5 +1,7 @@
 /**
- * Javascript Grid Web Component v1.0.0
+ * Javascript Grid Web Component v1.0.1
+ *
+ * https://github.com/riverside/zino-grid
  *
  * Copyright 2018, Dimitar Ivanov
  *

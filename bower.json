@@ -1,0 +1,25 @@
+{
+  "name": "zino-grid",
+  "description": "JavaScript Grid Web Component",
+  "main": "zino-grid.js",
+  "authors": [
+    {"name": "Dimitar Ivanov", "homepage": "https://twitter.com/DimitarIvanov"}
+  ],
+  "license": "MIT",
+  "keywords": [
+    "javascript",
+    "grid",
+    "webcomponents",
+    "table",
+    "customelements",
+    "es6"
+  ],
+  "homepage": "https://github.com/riverside/zino-grid",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
