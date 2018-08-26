@@ -4,10 +4,14 @@ A simple grid web component
 ## How to use
 
 ### Install
+##### Install with `npm`
 `$ npm install zino-grid`
 
+##### Install with `bower`
+`$ bower install zino-grid`
+
 ### Using `zino-grid`
-#### HTML way
+##### HTML way
 ```html
 <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
 
@@ -18,7 +22,7 @@ A simple grid web component
 ```
 Grid customizations are possible via `data-*` attributes.
 
-#### JavaScript way
+##### JavaScript way
 ```html
 <script src="../zino-grid.js"></script>
 <script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
@@ -29,7 +33,7 @@ var grid = new ZinoGrid({
 document.body.appendChild(grid);
 </script>
 ```
-### Styling
+##### Styling
 ```css
 :root {
   --background-head: #fff;
