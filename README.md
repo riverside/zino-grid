@@ -1,5 +1,5 @@
 # JavaScript Grid Web Component
-A simple grid web component
+Autonomous open source grid component with RTL support built on Custom Elements and Shadow DOM specifications.
 
 ## How to use
 
@@ -60,8 +60,9 @@ zino-grid {
 |**page**|No|Number|**1**|Currently displayed page.|
 |**perPage**|No|Number|**5**|Number of records displayed per page.|
 |**debug**|No|Boolean|**false**|Log actions in DevTools console.|
-|**filter**|No|Boolean|**false**|Show filtering input controls.|
-|**sort**|No|Boolean|**false**|Controls the sort by column functionallity.|
+|**filter**|No|Boolean|**false**|Allows a filtering functionallity.|
+|**sort**|No|Boolean|**false**|Allows a sort by column functionallity.|
+|**reorder**|No|Boolean|**false**|Allows a column reordering functionallity.|
 |**dir**|No|String|**ltr**|Text direction. Accepted values are **ltr** (left-to-right) and **rtl** (right-to-left)|
 
 ## Browser Support

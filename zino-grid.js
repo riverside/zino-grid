@@ -1,5 +1,5 @@
 /**
- * Javascript Grid Web Component v1.0.1
+ * Javascript Grid Web Component v1.0.2
  *
  * https://github.com/riverside/zino-grid
  *
@@ -15,8 +15,8 @@
     const template = document.createElement("template");
 
     template.innerHTML = `
-        <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="zino-grid.css">
+        <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/zino-grid@1.0.2/zino-grid.css">
         <div class="wrap" dir="ltr">
             <div class="wrap-head">
                 <table role="grid" id="grid-head">
@@ -72,10 +72,12 @@
                 debug: false,
                 filter: false,
                 sort: false,
+                reorder: false,
                 dir: "ltr"
             };
             this.data = [];
             this._data = [];
+            this.columns = [];
 
             const shadowRoot = this.attachShadow({
                 mode: 'open'
@@ -93,7 +95,7 @@
             this.log('constructor');
         }
         static get observedAttributes() {
-            return ['data-url', 'data-page', 'data-per-page', 'data-debug', 'data-filter', 'data-sort', 'data-dir'];
+            return ['data-url', 'data-page', 'data-per-page', 'data-debug', 'data-filter', 'data-sort', 'data-dir', 'data-reorder'];
         }
         get page() {
             return this.getAttribute('data-page');
@@ -127,6 +129,12 @@
         }
         set filter(val) {
             this.setAttribute('data-filter', val);
+        }
+        get reorder() {
+            return (this.getAttribute('data-reorder') === 'true');
+        }
+        set reorder(val) {
+            this.setAttribute('data-reorder', val);
         }
         get sort() {
             return (this.getAttribute('data-sort') === 'true');
@@ -225,6 +233,10 @@
                 this.state.filter = (newValue === "true");
                 this.toggleFilter();
                 break;
+            case "data-reorder":
+                this.state.reorder = (newValue === "true");
+                this.toggleReorder();
+                break;
             case "data-sort":
                 this.state.sort = (newValue === "true");
                 this.toggleSort();
@@ -247,6 +259,16 @@
             } else {
                 row.classList.add("hidden");
             }
+        }
+        toggleReorder() {
+            let that = this;
+            [].forEach.call(this.shadowRoot.querySelectorAll('#grid-head tr[aria-rowindex="1"] th'), function (th) {
+                if (that.state.reorder) {
+                    th.draggable = true;
+                } else {
+                    th.removeAttribute("draggable");
+                }
+            });
         }
         toggleSort() {
             let that = this;
@@ -415,13 +437,13 @@
             var tr, th, input,
                 that = this,
                 table = this.shadowRoot.querySelector("#grid-head"), 
-                thead = table.querySelector("thead"),
-                columns = Object.keys(this._data[0]);
+                thead = table.querySelector("thead");
+            this.columns = Object.keys(this._data[0]);
 
             tr = document.createElement("tr");
             tr.setAttribute("role", "row");
             tr.setAttribute("aria-rowindex", 1);
-            [].forEach.call(columns, function (column, i) {
+            [].forEach.call(this.columns, function (column, i) {
                 th = document.createElement("th");
                 th.setAttribute("role", "columnheader button");
                 th.setAttribute("aria-colindex", i + 1);
@@ -431,6 +453,61 @@
                 th.setAttribute("data-field", column);
                 th.tabIndex = 0;
                 th.textContent = column;
+                if (that.state.reorder) {
+                    th.draggable = true;
+                }
+                th.addEventListener("dragstart", function (e) {
+                    e.dataTransfer.effectAllowed = "move";
+                    e.dataTransfer.setData("text/plain", e.target.getAttribute("aria-colindex"));
+                });
+                th.addEventListener("dragover", function (e) {
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    }
+                    e.dataTransfer.dropEffect = "move";
+                    return false;
+                });
+                th.addEventListener("drop", function (e) {
+                    if (e.stopPropagation) {
+                        e.stopPropagation();
+                    }
+                    var index = e.dataTransfer.getData('text/plain');
+                    var targetIndex = e.target.getAttribute("aria-colindex");
+
+                    if (index === targetIndex) {
+                        return;
+                    }
+
+                    const tmp = that.columns[index - 1];
+                    that.columns[index - 1] = that.columns[targetIndex - 1];
+                    that.columns[targetIndex - 1] = tmp;
+
+                    var node = this;
+                    while (node.nodeName !== "#document-fragment") {
+                        node = node.parentNode;
+                    }
+
+                    var swapNodes = function (selector, el1) {
+                        var rowIndex = el1.parentNode.getAttribute("aria-rowindex");
+                        var el2 = node.querySelector(selector + ' tr[aria-rowindex="' + rowIndex + '"] [aria-colindex="' + targetIndex + '"]');
+                        el1.setAttribute("aria-colindex", targetIndex);
+                        el2.setAttribute("aria-colindex", index);
+                        var newNode = document.createElement("th");
+                        el1.parentNode.insertBefore(newNode, el1);
+                        el2.parentNode.replaceChild(el1, el2);
+                        newNode.parentNode.replaceChild(el2, newNode);
+                    };
+
+                    [].forEach.call(node.querySelectorAll('#grid-head th[aria-colindex="' + index + '"]'), function (el1) {
+                        swapNodes('#grid-head', el1);
+                    });
+
+                    [].forEach.call(node.querySelectorAll('#grid-body td[aria-colindex="' + index + '"]'), function (el1) {
+                        swapNodes('#grid-body', el1);
+                    });
+
+                    return false;
+                });
                 tr.appendChild(th);
             });
             thead.replaceChild(tr, thead.querySelector('tr[aria-rowindex="1"]'));
@@ -448,7 +525,7 @@
             if (!this.state.filter) {
                 tr.classList.add("hidden");
             }
-            [].forEach.call(columns, function (column, i) {
+            [].forEach.call(this.columns, function (column, i) {
                 th = document.createElement("th");
                 th.setAttribute("aria-colindex", i + 1);
                 input = document.createElement("input");
@@ -475,7 +552,7 @@
                 });
             });
 
-            table.setAttribute("aria-colcount", columns.length);
+            table.setAttribute("aria-colcount", this.columns.length);
 
             this.renderBody();
 
@@ -484,16 +561,16 @@
         renderBody() {
             this.log("render body");
             var tr, td,
+                that = this,
                 table = this.shadowRoot.querySelector("#grid-body"), 
-                tbody = document.createElement("tbody"),
-                columns = Object.keys(this._data[0]);
+                tbody = document.createElement("tbody");
 
             [].forEach.call(this.data, function (item, i) {
                 tr = document.createElement("tr");
                 tr.setAttribute("role", "row");
                 tr.setAttribute("aria-rowindex", i + 1);
                 tr.tabIndex = 0;
-                [].forEach.call(columns, function (column, j) {
+                [].forEach.call(that.columns, function (column, j) {
                     td = document.createElement("td");
                     td.setAttribute("role", "gridcell");
                     td.setAttribute("aria-colindex", j + 1);
