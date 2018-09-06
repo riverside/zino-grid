@@ -22,17 +22,25 @@ Autonomous open source grid component with RTL support built on Custom Elements 
 ```
 Grid customizations are possible via `data-*` attributes.
 
-##### JavaScript way
+##### using the DOM API
 ```html
-<script src="../zino-grid.js"></script>
-<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 <script>
-var grid = new ZinoGrid({
+const grid = document.createElement("zino-grid");
+grid.url = "data.json";
+document.body.appendChild(grid);
+</script>
+```
+
+##### using the constructor
+```html
+<script>
+const grid = new ZinoGrid({
   url: "data.json"
 });
 document.body.appendChild(grid);
 </script>
 ```
+
 ##### Styling
 ```css
 :root {
