@@ -15,7 +15,7 @@ const template = document.createElement("template");
 
 template.innerHTML = `
     <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/zino-grid@1.0.2/zino-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/zino-grid@1.0.3/zino-grid.css">
     <div class="wrap" dir="ltr">
         <div class="wrap-head">
             <table role="grid" id="grid-head">
