@@ -3,37 +3,43 @@ Autonomous open source grid component with RTL support built on Custom Elements 
 
 ## How to use
 
-### Install
-##### Install with `npm`
-`$ npm install zino-grid`
+### Installation
+- Install with **npm**
+```
+$ npm install zino-grid
+```
 
-##### Install with `bower`
-`$ bower install zino-grid`
+- Install with **bower**
+```
+$ bower install zino-grid
+```
 
-### Using `zino-grid`
-##### HTML way
+### Initialization
+- HTML way
 ```html
 <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
 
 <zino-grid data-url="data.json"></zino-grid>
 
-<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-<script src="../zino-grid.js"></script>
+<script type="module" src="../zino-grid.js"></script>
 ```
 Grid customizations are possible via `data-*` attributes.
 
-##### using the DOM API
+- using the DOM API
 ```html
+<script type="module" src="../zino-grid.js"></script>
+
 <script>
 const grid = document.createElement("zino-grid");
-grid.url = "data.json";
+grid.dataset.url = "data.json";
 document.body.appendChild(grid);
 </script>
 ```
 
-##### using the constructor
+- using the constructor
 ```html
-<script>
+<script type="module">
+import {ZinoGrid} from "../zino-grid.js";
 const grid = new ZinoGrid({
   url: "data.json"
 });
@@ -82,4 +88,4 @@ zino-grid {
 ## License
 zino-grid is licensed under the MIT license.
 
-Copyright (c) 2018 Dimitar Ivanov
+Copyright (c) 2018-2020 Dimitar Ivanov

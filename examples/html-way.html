@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Grid</title>
-    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <title>Grid: HTML way</title>
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
     <style>
     :root {
         --background-head: #fff;
@@ -24,16 +24,14 @@
     </style>
 </head>
 <body>
-    <zino-grid data-url="data.json" 
+    <zino-grid data-url="data.json"
         data-per-page="20" 
         data-page="2" 
         data-filter="true"
         data-sort="true"
 		data-reorder="true"
-        data-dir="ltr"
-        data-debug="true"></zino-grid>
+        data-dir="ltr"></zino-grid>
 
-    <script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    <script src="../zino-grid.js"></script>
+    <script type="module" src="../zino-grid.js"></script>
 </body>
 </html>

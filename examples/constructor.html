@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <title>Grid: constructor</title>
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
     <style>
     :root {
         --background-head: #fff;
@@ -19,18 +19,15 @@
     </style>
 </head>
 <body>
-    <script src="../zino-grid.js"></script>
-    <script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    <script>
-    var grid = new ZinoGrid({
+    <script type="module">
+    import { ZinoGrid } from "../zino-grid.js";
+    const grid = new ZinoGrid({
         url: "data.json",
         page: 2,
         perPage: 10,
-        debug: true,
         sort: true,
         filter: true,
-		reorder: true,
-        dir: "rtl"
+		reorder: true
     });
     document.body.appendChild(grid);
     </script>

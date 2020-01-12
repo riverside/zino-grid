@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid: DOM API</title>
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+    <style>
+    :root {
+        --background-head: #fff;
+        --color-head: #FA4251;
+        --color-head-active: #FA4251;
+        --background-foot: #fff;
+        --color-foot: #222;
+        --background-odd: #fff;
+        --background-even: #fff;
+        --color-odd: #333;
+        --color-even: #222;
+    }
+    </style>
+</head>
+<body>
+    <script type="module" src="../zino-grid.js"></script>
+
+    <script>
+        const grid = document.createElement("zino-grid");
+        grid.dataset.url = "data.json";
+        document.body.appendChild(grid);
+    </script>
+</body>
+</html>
