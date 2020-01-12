@@ -17,8 +17,6 @@ $ bower install zino-grid
 ### Initialization
 - HTML way
 ```html
-<link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
-
 <zino-grid data-url="data.json"></zino-grid>
 
 <script type="module" src="../zino-grid.js"></script>
