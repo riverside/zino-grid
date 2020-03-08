@@ -1,6 +1,8 @@
 # JavaScript Grid Web Component
 Autonomous open source grid component with RTL support built on Custom Elements and Shadow DOM specifications.
 
+[![NPM](https://nodei.co/npm/zino-grid.png)](https://nodei.co/npm/zino-grid/)
+
 ## How to use
 
 ### Installation
