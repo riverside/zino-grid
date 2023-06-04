@@ -1,9 +1,9 @@
 # JavaScript Grid Web Component
 Autonomous open source grid component with RTL support built on Custom Elements and Shadow DOM specifications.
 
-| Build | NPM |
-| --- | --- |
-| [![CI](https://github.com/riverside/zino-grid/actions/workflows/test.yml/badge.svg)](https://github.com/riverside/zino-grid/actions/workflows/test.yml) | [![NPM](https://nodei.co/npm/zino-grid.png?compact=true)](https://nodei.co/npm/zino-grid/) |
+| Build | NPM | Bower |
+| --- | --- | --- |
+| [![CI](https://github.com/riverside/zino-grid/actions/workflows/test.yml/badge.svg)](https://github.com/riverside/zino-grid/actions/workflows/test.yml) | [![npm version](https://badge.fury.io/js/zino-grid.svg)](https://badge.fury.io/js/zino-grid) | [![Bower version](https://badge.fury.io/bo/zino-grid.svg)](https://badge.fury.io/bo/zino-grid) |
 
 ## How to use
 
