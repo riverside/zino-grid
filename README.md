@@ -3,7 +3,7 @@ Autonomous open source grid component with RTL support built on Custom Elements 
 
 | Build | NPM | Bower |
 | --- | --- | --- |
-| [![CI](https://github.com/riverside/zino-grid/actions/workflows/test.yml/badge.svg)](https://github.com/riverside/zino-grid/actions/workflows/test.yml) | [![npm version](https://badge.fury.io/js/zino-grid.svg)](https://badge.fury.io/js/zino-grid) | [![Bower version](https://badge.fury.io/bo/zino-grid.svg)](https://badge.fury.io/bo/zino-grid) |
+| [![CI](https://github.com/riverside/zino-grid/actions/workflows/test.yml/badge.svg)](https://github.com/riverside/zino-grid/actions/workflows/test.yml) | [![npm version](https://badge.fury.io/js/zino-grid.svg)](https://www.npmjs.com/package/zino-grid) | [![Bower version](https://badge.fury.io/bo/zino-grid.svg)](https://badge.fury.io/bo/zino-grid) |
 
 ## How to use
 
